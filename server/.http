@@ -6,7 +6,13 @@ POST http://localhost:8000/api/new-product
 content-type: application/json
 
 {
-    "tile": "Lapiz",
+    "title": "Lapiz",
     "price": "150",
     "description": "Lapiz de color verde"
 }
+
+### GET All Products
+GET http://localhost:8000/api/products
+
+###GET one product
+GET http://localhost:8000/api/products/609e74fdb2defd67e07b1451

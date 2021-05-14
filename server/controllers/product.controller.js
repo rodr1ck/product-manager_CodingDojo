@@ -7,12 +7,24 @@ module.exports.index = (request, response) => {
 }
 
 module.exports.createProduct = (request, response) => {
-    const { tile, price, description } = request.body
+    const { title, price, description } = request.body
     Product.create({
-        tile,
+        title,
         price,
         description
     })
         .then((product) => response.json({product, mensaje: "producto creado exitosamente"}))
         .catch((err) => response.json(err))
+}
+
+module.exports.getAllProducts = (request, response) => {
+    Product.find({})
+        .then(products => response.json(products))
+        .catch(err => response.json(err))
+}
+
+module.exports.getProduct = (request, response) => {
+    Product.findOne({_id:request.params.id})
+        .then(person => response.json(person))
+        .catch(err => response.json(err))
 }

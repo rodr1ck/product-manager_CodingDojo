@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const ProductForm = () => {
     //keep track of what is being typed via useState hook
-    const [tile, setTile] = useState('')
+    const [title, setTitle] = useState('')
     const [price, setPrice] = useState('')
     const [description, setDescription] = useState('')
     const [message, setMessage] = useState('')
@@ -15,7 +15,7 @@ const ProductForm = () => {
         //make a post request to create a new person
         axios
             .post('http://localhost:8000/api/new-product', {
-                tile,
+                title,
                 price,
                 description,
             })
@@ -23,6 +23,9 @@ const ProductForm = () => {
                 console.log(res)
                 const result = res.data.mensaje
                 setMessage(result)
+                setTitle('')
+                setPrice('')
+                setDescription('')
             })
             .catch((err) => console.log(err))
     }
@@ -31,11 +34,12 @@ const ProductForm = () => {
         <>
             <form onSubmit={onSubmitHandler}>
                 <p>
-                    <label>Tile</label>
+                    <label>Title</label>
                     <br />
                     <input
                         type="text"
-                        onChange={(e) => setTile(e.target.value)}
+                        value = {title}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
                 </p>
                 <p>
@@ -43,6 +47,7 @@ const ProductForm = () => {
                     <br />
                     <input
                         type="text"
+                        value = {price}
                         onChange={(e) => setPrice(e.target.value)}
                     />
                 </p>
@@ -51,6 +56,7 @@ const ProductForm = () => {
                     <br />
                     <input
                         type="text"
+                        value = {description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </p>
