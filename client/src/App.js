@@ -1,30 +1,33 @@
-import './App.css';
-import Main from './views/Main';
+import './App.css'
+import Main from './views/Main'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import ProductList from './components/ProductList';
-import Detail from './views/Detail';
+import ProductList from './components/ProductList'
+import Detail from './views/Detail'
+import Update from './views/Update'
 
 function App() {
-  return (
-    <div className="App">
-                  <Router>
+    return (
+        <div className="App">
+            <Router>
                 <div>
                     <Switch>
-                       <Route path="/people/:id">
+                        <Route exact path="/products/:id/edit">
+                            <Update />
+                        </Route>
+                        <Route exact path="/products/:id">
                             <Detail />
-                        </Route> 
-                        <Route path="/people">
+                        </Route>
+                        <Route exact path="/products">
                             <ProductList />
                         </Route>
-                        <Route path="/">
+                        <Route exact path="/">
                             <Main />
                         </Route>
                     </Switch>
                 </div>
             </Router>
-    </div>
-
-  );
+        </div>
+    )
 }
 
-export default App;
+export default App
