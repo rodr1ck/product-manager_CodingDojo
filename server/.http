@@ -16,3 +16,16 @@ GET http://localhost:8000/api/products
 
 ###GET one product
 GET http://localhost:8000/api/products/609e74fdb2defd67e07b1451
+
+###Update one product
+PUT http://localhost:8000/api/products/609e7d2c0e8d4e441c4735a4
+content-type: application/json
+
+{
+    "title": "Goma",
+    "price": "188",
+    "description": "Goma de borrar"
+}
+
+### Delete a product
+DELETE http://localhost:8000/api/products/609e7d2c0e8d4e441c4735a4
